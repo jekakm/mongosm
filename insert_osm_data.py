@@ -8,7 +8,8 @@ import pymongo
 from datetime import datetime
 #from xml.sax import make_parser
 #from xml.sax.handler import ContentHandler
-from pymongo import Connection
+#from pymongo import Connection
+from mogo import connect as Connection
 from xml.etree.cElementTree import iterparse
 
 class OsmHandler(object):
@@ -196,10 +197,10 @@ if __name__ == "__main__":
         print "Path %s doesn't exist." % (filename)
         sys.exit(-1)
 
-    client = Connection()
+    client = Connection('osm')
     #parser = make_parser()
     handler = OsmHandler(client)
     #parser.setContentHandler(handler)
     #parser.parse(open(filename))
     handler.parse(open(filename))
-    client.disconnect()
+    #client.disconnect()
